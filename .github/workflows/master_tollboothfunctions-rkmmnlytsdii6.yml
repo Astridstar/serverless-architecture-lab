@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './Hands-on lab/lab-files/src/TollBooth/TollBooth' # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '3.1.x' # set this to the dotnet version to use
 
 jobs:
@@ -29,9 +29,9 @@ jobs:
         shell: pwsh
         run: |
           cd './Hands-on lab/lab-files/src/TollBooth/TollBooth'
-          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+          #pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           dotnet build --configuration Release --output ./output
-          popd
+          #popd
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
